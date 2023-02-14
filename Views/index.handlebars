@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem vinda Exma Ellen!</h1>
+  <p class="lead">Edificai a tua casa!</p>
+  <hr class="my-4">
+  <p>Verifique por categorias! </p>
+  <p class="lead">
+    <a class="btn btn-outline-primary" href="/categoriasLista" role="button">Categorias</a>
+  </p>
+  <hr>
+  <h1>Postagens recentes:</h1>
+  {{#each postagem}}
+    <div class="card mt-2" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{titulo}}</h5>
+    <p class="card-text">{{descricao}}</p>
+    <a href="#" class="btn btn-primary">{{categoria.nome}}</a>
+  </div>
+</div>
+{{else}}
+<h5>nenhuma postagem</h5>
+  {{/each}}
+</div>

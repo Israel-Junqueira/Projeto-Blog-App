@@ -1,0 +1,159 @@
+npm init 
+instalei o express | npm install --save express
+
+instalei o express-handlebars  | npm install --save express-handlebars -> O Handlebars fornece as funcionalidades necessárias para permitir que você crie modelos semânticos de forma eficaz sem frustração.
+
+instalei o body-parser | npm install --save body-parser
+
+instalei o mongoDB | npm install --salve mongoose
+
+Usei o bootstrap e css para o front end
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Segunda parte 
+________________
+
+2.1 -> Criar o app.js para importar os modulos instalados.
+
+2.2 -> Criar a pasta models ou seja a parte que cria as tabelas do banco de dados
+
+2.3 -> Criar a pasta router  
+
+2.4 -> Criar a pasta das views 
+
+2.5 -> dentro da pasta views criar o arquivo main.handlebars que tera uma estrutura html basica
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Terceira parte
+    Configurações do handle e body
+________________
+
+3.1 -> começar a configurar o body-parser e o handlebars no arquivo app.js
+3.2 -> Definir o layout principal com o arquivo main
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Quarta parte
+    Avisando o Express da nova rota
+________________
+
+4.1 -> criar os arquivos de rotas dentro da pasta Router e importar os modulos do express
+4.2 -> sempre que criar um novo arquivo de rotas precisa avisar o express no arquivo app.js 
+4.3 -> importe a rota //const nome=require("./router/nomedarouter")
+4.3 -> app.use('/nomedarota',nomedavaraveldarota)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Quinta parte
+    Adicionando bootstrap
+________________
+
+5.1 -> dentro do projeto criar uma pasta chamada public
+5.2 -> Baixar o bootstrap no site oficial 
+5.3 -> Colocar os arquivos css e js dentro da public
+5.4 -> Carregar o modulo path para manipular os diretorios do projeto dentro do arquivo app.js
+5.5 -> avisando o express que a pasta com arquivos staticos e a pasta public 
+5.6 -> adicionar dentro da main.handlebars os dois arquivos cdn do bootstrap, jquery e o pooper para que o bootstrap funcione corretamente
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sexta parte
+    Testando bootstrap
+________________
+6.1 -> Criei um diretorio dentro da Views chamado "admin" e dentro do admin um arquivo chamado "index"
+6.2 -> no arquivo admin.js do diretorio router, adicionei na rota um render("admin/index")
+6.3 -> ainda na sexta parte adicionei novas views e criei novas rotas, criei um formulario para enviar os dados para o banco
+6.4 -> criei as rotas categorias 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+setima parte
+    Adicionando ao banco de dados
+    _______________
+
+7.1 -> Fazer as configuranções padrões no arquivo "app.js"
+7.2 -> Criar o arquivo dentro da pasta model "post_model" para criar o schema do banco de dados
+7.3 -> No arquivo "admin" chamar o arquivo PostModel para depois instanciar como nova categorias para salvar os dados e enviar dados para view
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Oitava parte    
+    Criando categorias (eviar dados para o banco de dados com metodo post)
+
+8.1 -> Criar a nova rota com metodo Post dentro do arquivo "admin"
+8.2 -> atenção para que na hora de chamar o body."nome" tem que ter o mesmo nome do input do handlebars.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nona Parte
+    Configurando sessões
+
+9.1 -> Instalação de dois modulos Npm
+9.2 -> npm install --save express-session
+9.3 -> npm install --save connect-flash
+9.4 -> carregar os modulos no arquivo app
+9.5 -> configurar no app  app.use(session())....
+9.6 -> criei um middleware de variaveis globais que armazenam msgs de erro e sucesso
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Decima Parte    
+    Sistema de validação de formularios
+    Como validar formulários no Express.js 
+    E usar o metodo flash para mensagens rapidas
+
+10.1 -> Depois de criar no arquivo "admin" dentro do metodo post as validações 
+10.2 -> vá para handlebars que vc definiu o formulario para pushar os erros (começo do topico usando {{#each}})
+
+10.3 -> Para exibir as mensagens de criado com sucesso, no ponto "new categoria" adicionei um metodo chamado flash
+esse metodo cria estruturas de mensagens de curto prazo, ou seja ate o usuario atualizar a pagina.
+    Para isso precisei criar as variaveis globais que estão no arquivo "app" la em middleware assim eu chamo o metodo flash passo o nome da variavel e o conteudo dela que é enviado para a variavel global. Para ficar correto foi criado uma partial view chamada _msg.handlebars lá eu carrego as duas mensagem caso houver, "erro" e "sucesso". 
+    E logo em seguida adicionei na "main" que é o layout principal, ai toda vez q o usuario cadastrar uma nova categoria a mensagem e enviada para a variavel global q é exibida no layout.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter 11
+    Trazendo dados do banco de dados
+
+11.1 -> no arquivo admin router.get "vá ate o arquivo e verifique como foi escrito o codigo, pq eu to com preguiça de digitar aq"
+11.2 -> depois va na categoria.handlebars e use o {{#each "nome do objeto"}} {{/each}}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Chapter 12
+    Editando excluindo dados
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter 13
+    sistema de autenticação com Passport (Local)
+
+    13.1 -> criei o formulario de cadastro normalmente 
+    13.2 -> npm install --save passport
+    13.3 -> npm install --save passport-local
+        Configurações importanticimais
+    13.4 -> criar um novo diretoria(config)
+    13.5 -> criar o arquivo auth.js dentro de config e fazer as configurações
+    13.6 -> ir no app.js carregar o passport const passport = require("passport")
+    13.7 -> ir no app.js e chamar o arquivo auth.js require("./config/auth")(passport)
+    13.8 -> ainda no app.js entre a configuração da sessão e do flash é necessario fazer uma configuraçáo vá ver        app.use(passport.initialize())
+    13.9 -> Dentro da rota do usuario chamaremos o passport usando o required, criei uma rota lá e chamei algumas funções
+    13.10 -> para aparecer o erro tbm chamei criei uma variavel global no app.js e tbm chamei la no arquivo compartilhado do main
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter 14
+    modulo de hash para transformar o arquivo texto em hash no banco de dados
+
+   14.1 npm install --save bcryptjs
+   14.2 no arquivo app.js fazer a requisição do modulo
+   14.3 Exemplo de incriptação com genSalt arquivo "usuario/rotas"
+
+Chapter 15 
+    Helpers e suas funções 
+
+    15.1 -> criei uma pasta helper com um aquivo eadmin com a função de authenticar um usuario 
+    15.2 -> observe que um e para pessoa authenticadas e outro para apenas admins
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter 16
+    Bloqueio de rotas para admins
+    16.1 -> para fazer com que vc bloqueie rotas basta vc deve ir no arquivo das rotas do admin 
+    16.2 -> traga com require o arquivo que criamos anteriormente chamado de eAdmin ->  const {eAdmin} = require("../helpers/eAdmin")
+    16.3 -> e para vc bloquear uma rota basta colocar o (eAdmin) apos o nome da rota router.get("/",eAdmin, (req, resp) => { resp.render("admin/index") }) 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chapter 17
+    Coisas interessante (sumir com o o login e registro apos logar)
+    17.1 -> va no arquivo de _navbar.handlebars para verificar oq foi feito
+
+Chapter 18
+    Implantar na web com hiroko (gratuita)
+
+    18.1 -> ir no packege.json e criar um comando de script exemplo o start do hiroku( "start":"node app.js") para o hiroku startar 
+    18.2 -> alterar a porta no hiroku ao app.js
+    18.3 -> entrar no mlab (ele da 500mb gratuitos para hospedar dados com mongoDb)

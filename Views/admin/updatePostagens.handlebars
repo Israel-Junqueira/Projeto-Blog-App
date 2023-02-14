@@ -1,0 +1,37 @@
+<h3>Editando Postagens</h3>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <form action="/admin/postagem/update" method="POST">
+            <input type="hidden"value="{{postagem._id}}" name="id"> <!--nunca esqueça esse campo sinao vai da erro-->
+            <div class="form-group">
+                <label for="nome">Titulo:</label>
+                <input class="form-control" type="text"  name="titulo" id="titulo"  value="{{postagem.titulo}}">
+            </div>
+            <div class="form-group">
+                <label for="slug">Slug:</label>
+                <input class="form-control" type="text" name="slug" id="slug" value="{{postagem.slug}}">
+                <br>
+            </div>
+             <div class="form-group">
+                <label for="slug">Descricao:</label>
+                <input class="form-control" type="text" name="descricao" id="descricao" value="{{postagem.descricao}}">
+                <br>
+            </div>
+              <div class="form-group">
+                <label for="slug">Conteudo:</label>
+                <textarea class="form-control" name="conteudo" >{{postagem.conteudo}}</textarea> <!--textarea nao tem value-->
+                <br>
+            <label>Categorias:</label>
+            <select class="form-control form-control-lg"name="idcategoria">
+               {{#each categoria}}
+                <option value="{{_id}}" class="mt-3" >{{nome}}</option>
+              
+                {{else}}
+                <option value="0">Nenhuma categoria registrada</option>
+               {{/each}}
+             </select> 
+           <button type="submit" class="btn btn-success mt-3">Salvar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+
+{{#if warning}}
+  <div class="alert alert-danger mt-4" role="alert">
+    <h4 class="alert-heading">Tem certeza que deseja deletar a categoria:{{warning.nome}}</h4>
+    <p>Isso destruira a categoria </p>
+    <hr>
+    <p class="mb-0">Destruir?</p> 
+  
+    <a href="/admin/categorias/delet/{{warning._id}}"><button type="submit" class="btn btn-outline-danger">Sim</button></a> 
+   
+    <a href="/admin/categorias"><button type="button" class="btn btn-outline-success">Nao</button></a>
+
+      <form action="/admin/categorias/delet2" method="POST">
+      <h3>fiz o segundo botão como estudo de caso com o formulario</h3>
+      <p>Observações: no segundo botao usei o body na rota pois tive que pegar do corpo do formulario ouve a necessidade de colocar um input para resgatar o id, e para que no corpo do formulario fosse enviado tbm e resgatado dentro da rota </p>
+        <input type="hidden" name="teste" value="{{warning._id}}">
+        <button type="submit" class="btn btn-outline-danger">Sim</button>
+      </form>
+  </div>
+{{/if}}

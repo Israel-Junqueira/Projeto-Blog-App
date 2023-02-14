@@ -1,0 +1,16 @@
+{{#each postagens}}
+    <div class="card mt-3">
+  <h5 class="card-header">{{titulo}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{slug}}</h5>
+    <p class="card-text">{{descricao}}</p>
+     <p class="card-text">{{conteudo}}</p>
+    <a class="btn btn-primary">{{categoria.nome}}</a> 
+    <br>
+    <a href="/admin/postagem/update/{{_id}}"><button  class="btn btn-outline-primary mt-3">Editar</button></a> 
+    <a href="/admin/postagem/excluir/{{_id}}"><button class="btn btn-outline-danger mt-3">Excluir</button></a>
+  </div>
+</div>
+{{else}}
+    <p>nenhuma postagem cadastrada</p>
+{{/each}}

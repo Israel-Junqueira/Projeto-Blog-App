@@ -1,0 +1,15 @@
+  {{#if categoria}}
+    <h1 class="btn btn-info"> {{categoria.nome}}</h1>
+  {{/if}}
+{{#each postagens}}
+    <div class="card">
+  <h5 class="card-header">{{titulo}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{{else}}
+    Nenhuma postagem pertence a essa categoria
+{{/each}}

@@ -1,0 +1,12 @@
+{{#each categoria}}
+    <div class="card">
+  <div class="card-header">
+    {{nome}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{slug}}</h5>
+    <a href="/pertencentes/{{_id}}" class="btn btn-primary">Mostrar pertencentes</a>
+  </div>
+</div>
+    {{else}}
+{{/each}}

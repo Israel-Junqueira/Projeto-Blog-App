@@ -1,0 +1,16 @@
+<h1>Lista de categorias:</h1>
+{{#each categorias}}
+<div class="card mt-4">
+    <div class="card-body ">
+     <h3>Categoria:{{nome}}</h2>
+     <h3>Slug:{{slug}}</h1>
+         <a href="/admin/categorias/edit/{{_id}}"><button class="btn btn-outline-info">Editar</button></a><!--ateção o segredo ta no " _ " na frente do id-->
+         <a href="/admin/categorias/warning/{{_id}}"><button class="btn btn-outline-danger">Excluir</button></a>
+         
+    </div>
+</div>
+   {{else}}
+        <p>Nenhuma categoria cadastrada</p>
+{{/each}}
+<br>
+<a href="/admin/categorias/add"><button class="btn btn-success">Criar</button></a>
